@@ -20,6 +20,7 @@
 		"strictNullChecks": true,
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": "./",
+		"types": ["./@types"],
 		"paths": {
 			"@components/*": ["./src/components/*"],
 			"@layouts/*": ["./src/layouts/*"],

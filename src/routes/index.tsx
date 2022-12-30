@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from 'react-router-dom'
 
 // layouts
 import DashboardLayout from '@layouts/dashboard'
+import MainLayout from '@layouts/main'
 
 // config
 import { DEFAULT_PATH } from '@utils/config'
@@ -12,28 +13,26 @@ const WrapSuspens: React.FC<React.PropsWithChildren> = ({ children }) => {
 	return <Suspense fallback={<LoadingScreen />}>{children}</Suspense>
 }
 
-const GeneralAppPage = lazy(() => import('@pages/dashboard/GeneralApp'))
-const GeneralApp: React.FC = () => (
-	<WrapSuspens>
-		<GeneralAppPage />
-	</WrapSuspens>
-)
-const Page404Page = lazy(() => import('@pages/Page404'))
-const Page404: React.FC = () => (
-	<WrapSuspens>
-		<Page404Page />
-	</WrapSuspens>
-)
-
-const SettingsPage = lazy(() => import('@pages/dashboard/Settings'))
-const Settings: React.FC = () => (
-	<WrapSuspens>
-		<SettingsPage />
-	</WrapSuspens>
-)
+const generatePage = (Component: React.LazyExoticComponent<React.FC>) => {
+	return () => WrapSuspens({ children: <Component /> })
+}
+const GeneralApp = generatePage(lazy(() => import('@pages/dashboard/GeneralApp')))
+const Page404 = generatePage(lazy(() => import('@pages/Page404')))
+const Settings = generatePage(lazy(() => import('@pages/dashboard/Settings')))
+const Login = generatePage(lazy(() => import('@pages/auth/Login')))
 
 export default function Router() {
 	return useRoutes([
+		{
+			path: '/auth',
+			element: <MainLayout />,
+			children: [
+				{
+					path: 'login',
+					element: <Login />,
+				},
+			],
+		},
 		{
 			path: '/',
 			element: <DashboardLayout />,
