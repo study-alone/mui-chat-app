@@ -17,7 +17,8 @@ const Delete: React.FC<DeleteProps> = ({ onClose }) => {
 			TransitionComponent={Transition}
 			keepMounted
 			onClose={handleClose}
-			aria-describedby="alert-dialog-slide-description">
+			aria-describedby="alert-dialog-slide-description"
+		>
 			<DialogTitle>Delete this chat</DialogTitle>
 			<DialogContent>
 				<DialogContentText id="alert-dialog-slide-description">

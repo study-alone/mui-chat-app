@@ -39,7 +39,8 @@ export default function SettingMode() {
 										color: 'primary.main',
 										boxShadow: (theme) => theme.customShadows.z20,
 									}),
-								}}>
+								}}
+							>
 								<Iconify
 									icon={index === 0 ? 'ph:sun-duotone' : 'ph:moon-duotone'}
 									width={28}

@@ -76,7 +76,8 @@ const ChatInput: React.FC = () => {
 						<Box
 							sx={{
 								display: emojiOpen ? 'block' : 'none',
-							}}>
+							}}
+						>
 							<EmojiPicker
 								onSelect={console.log}
 								open={emojiOpen}

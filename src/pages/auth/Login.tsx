@@ -1,4 +1,4 @@
-import { Link, Stack, Typography } from '@mui/material'
+import { Divider, Link, Stack, Typography } from '@mui/material'
 import { AuthSocial, LoginForm } from '@components/common'
 
 const Login: React.FC = () => {
@@ -14,6 +14,7 @@ const Login: React.FC = () => {
 				</Stack>
 				{/* Login form */}
 				<LoginForm />
+				<Divider variant="dashedAndSpacing">OR</Divider>
 				{/* Auth social */}
 				<AuthSocial />
 			</Stack>

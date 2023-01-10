@@ -38,7 +38,8 @@ export default function SettingDirection() {
 										color: 'primary.main',
 										boxShadow: (theme) => theme.customShadows.z20,
 									}),
-								}}>
+								}}
+							>
 								<Iconify
 									icon={index === 0 ? 'ph:align-left-duotone' : 'ph:align-right-duotone'}
 									width={28}

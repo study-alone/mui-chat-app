@@ -18,7 +18,8 @@ export const TextMessage: React.FC<TextMessageProps> = ({ message, incoming, dis
 					borderRadius: 1.5,
 					width: 'max-content',
 					boxShadow: shadows[5],
-				}}>
+				}}
+			>
 				<Typography variant="body2" color={incoming ? palette.text.primary : '#fff'}>
 					{message}
 				</Typography>

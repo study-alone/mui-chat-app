@@ -43,7 +43,8 @@ export const SideNavigation: React.FC = () => {
 				spacing={3}
 				py={3}
 				width="100%"
-				height="100%">
+				height="100%"
+			>
 				<Stack alignItems="center" spacing={4}>
 					<LogoStyled>
 						<img src={Logo} alt="Chat App Logo" />
@@ -54,7 +55,8 @@ export const SideNavigation: React.FC = () => {
 								isActive={index === selected}
 								onClick={setSelected}
 								index={index}
-								key={`nav-button-${index}`}>
+								key={`nav-button-${index}`}
+							>
 								<Icon />
 							</NavButton>
 						))}
@@ -82,7 +84,8 @@ export const SideNavigation: React.FC = () => {
 						onClose={handleCloseProfileMenu}
 						MenuListProps={{ 'aria-labelledby': 'profile-menu-button' }}
 						anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-						transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
+						transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+					>
 						<Stack spacing={1} px={1}>
 							{Profile_Menu.map(({ title, Icon }) => (
 								<MenuItem
@@ -90,13 +93,15 @@ export const SideNavigation: React.FC = () => {
 									component={IconButton}
 									data-value={title}
 									disabled={selectedProfileMenu === title}
-									onClick={handleSelectProfileMenu}>
+									onClick={handleSelectProfileMenu}
+								>
 									<Stack
 										sx={{ width: '100%' }}
 										spacing={2}
 										direction="row"
 										alignItems="center"
-										justifyContent="space-between">
+										justifyContent="space-between"
+									>
 										<Typography component="span" variant="caption">
 											{title}
 										</Typography>

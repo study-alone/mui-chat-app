@@ -33,7 +33,8 @@ export default function SettingStretch() {
 				...(themeStretch && {
 					color: (theme) => theme.palette.primary.main,
 				}),
-			}}>
+			}}
+		>
 			<Stack
 				direction="row"
 				alignItems="center"
@@ -52,7 +53,8 @@ export default function SettingStretch() {
 						width: 1,
 						color: 'primary.main',
 					}),
-				}}>
+				}}
+			>
 				<Iconify
 					icon={themeStretch ? 'eva:arrow-ios-back-fill' : 'eva:arrow-ios-forward-fill'}
 					{...ICON_SIZE}

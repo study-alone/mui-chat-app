@@ -1,5 +1,5 @@
 import { AnimatePresence, m } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 // @mui
 import { alpha, styled } from '@mui/material/styles'
 import { Stack, Divider, Backdrop, Typography, IconButton } from '@mui/material'
@@ -13,9 +13,9 @@ import { NAVBAR, defaultSettings } from '@utils/config'
 import { Iconify, Scrollbar } from '@components/common'
 //
 import ToggleButton from './ToggleButton'
-import SettingDirection from './SettingDirection'
-import SettingFullscreen from './SettingFullscreen'
-import SettingColorPresets from './SettingColorPresets'
+import SettingDirection from '@components/settings/drawer/SettingDirection'
+import SettingFullscreen from '@components/settings/drawer/SettingFullscreen'
+import { SettingColorPresets } from '@components/settings/drawer/SettingColorPresets'
 
 // ----------------------------------------------------------------------
 
@@ -47,32 +47,27 @@ const RootStyle = styled(m.div)(({ theme }) => ({
 export default function SettingsDrawer() {
 	const { themeMode, themeLayout, themeStretch, themeContrast, themeDirection, themeColorPresets, onResetSetting } =
 		useSettings()
-
 	const [open, setOpen] = useState(false)
-
-	const notDefault =
-		themeMode !== defaultSettings.themeMode ||
-		themeLayout !== defaultSettings.themeLayout ||
-		themeStretch !== defaultSettings.themeStretch ||
-		themeContrast !== defaultSettings.themeContrast ||
-		themeDirection !== defaultSettings.themeDirection ||
-		themeColorPresets !== defaultSettings.themeColorPresets
+	const notDefault = [
+		themeMode !== defaultSettings.themeMode,
+		themeLayout !== defaultSettings.themeLayout,
+		themeStretch !== defaultSettings.themeStretch,
+		themeContrast !== defaultSettings.themeContrast,
+		themeDirection !== defaultSettings.themeDirection,
+		themeColorPresets !== defaultSettings.themeColorPresets,
+	].some((condition) => condition)
 
 	useEffect(() => {
-		if (open) {
-			document.body.style.overflow = 'hidden'
-		} else {
-			document.body.style.overflow = ''
-		}
+		document.body.style.overflow = open ? 'hidden' : ''
 	}, [open])
 
-	const handleToggle = () => {
+	const handleToggle = useCallback(() => {
 		setOpen((prev) => !prev)
-	}
+	}, [])
 
-	const handleClose = () => {
+	const handleClose = useCallback(() => {
 		setOpen(false)
-	}
+	}, [])
 
 	return (
 		<>
@@ -94,34 +89,29 @@ export default function SettingsDrawer() {
 							direction="row"
 							alignItems="center"
 							justifyContent="space-between"
-							sx={{ py: 2, pr: 1, pl: 2.5 }}>
+							sx={{ py: 2, pr: 1, pl: 2.5 }}
+						>
 							<Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
 								Settings
 							</Typography>
-
 							<IconButton onClick={onResetSetting}>
-								<Iconify icon={'ic:round-refresh'} width={20} height={20} />
+								<Iconify icon="ic:round-refresh" width={20} height={20} />
 							</IconButton>
-
 							<IconButton onClick={handleClose}>
-								<Iconify icon={'eva:close-fill'} width={20} height={20} />
+								<Iconify icon="eva:close-fill" width={20} height={20} />
 							</IconButton>
 						</Stack>
-
-						<Divider sx={{ borderStyle: 'dashed' }} />
-
+						<Divider variant="dashed" />
 						<Scrollbar sx={{ flexGrow: 1, height: '100%' }}>
 							<Stack spacing={3} sx={{ p: 3 }}>
 								<Stack spacing={1.5}>
 									<Typography variant="subtitle2">Direction</Typography>
 									<SettingDirection />
 								</Stack>
-
 								<Stack spacing={1.5}>
 									<Typography variant="subtitle2">Presets</Typography>
 									<SettingColorPresets />
 								</Stack>
-
 								<SettingFullscreen />
 							</Stack>
 						</Scrollbar>

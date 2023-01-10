@@ -1,8 +1,18 @@
-import type { Theme } from '@mui/material'
+import type { Theme, Components } from '@mui/material'
+
+declare module '@mui/material' {
+	interface ButtonPropsVariantOverrides {
+		containedNoneHover: true
+	}
+}
 
 // ----------------------------------------------------------------------
+type ButtonTheme = { MuiButton: Components['MuiButton'] }
+export default function Button(theme: Theme): ButtonTheme {
+	const isLight = theme.palette.mode === 'light'
+	const { palette, customShadows } = theme
+	const containedNoneHoverColor = isLight ? theme.palette.common.white : theme.palette.grey[800]
 
-export default function Button(theme: Theme) {
 	return {
 		MuiButton: {
 			styleOverrides: {
@@ -16,43 +26,56 @@ export default function Button(theme: Theme) {
 				},
 				// contained
 				containedInherit: {
-					color: theme.palette.grey[800],
-					boxShadow: theme.customShadows.z8,
+					color: palette.grey[800],
+					boxShadow: customShadows.z8,
 					'&:hover': {
-						backgroundColor: theme.palette.grey[400],
+						backgroundColor: palette.grey[400],
 					},
 				},
 				containedPrimary: {
-					boxShadow: theme.customShadows.primary,
+					boxShadow: customShadows.primary,
 				},
 				containedSecondary: {
-					boxShadow: theme.customShadows.secondary,
+					boxShadow: customShadows.secondary,
 				},
 				containedInfo: {
-					boxShadow: theme.customShadows.info,
+					boxShadow: customShadows.info,
 				},
 				containedSuccess: {
-					boxShadow: theme.customShadows.success,
+					boxShadow: customShadows.success,
 				},
 				containedWarning: {
-					boxShadow: theme.customShadows.warning,
+					boxShadow: customShadows.warning,
 				},
 				containedError: {
-					boxShadow: theme.customShadows.error,
+					boxShadow: customShadows.error,
 				},
 				// outlined
 				outlinedInherit: {
-					border: `1px solid ${theme.palette.grey[500_32]}`,
+					border: `1px solid ${palette.grey[500_32]}`,
 					'&:hover': {
-						backgroundColor: theme.palette.action.hover,
+						backgroundColor: palette.action.hover,
 					},
 				},
 				textInherit: {
 					'&:hover': {
-						backgroundColor: theme.palette.action.hover,
+						backgroundColor: palette.action.hover,
 					},
 				},
 			},
+			variants: [
+				{
+					props: { variant: 'containedNoneHover' },
+					style: {
+						backgroundColor: palette.text.primary,
+						color: containedNoneHoverColor,
+						'&:hover': {
+							backgroundColor: palette.text.primary,
+							color: containedNoneHoverColor,
+						},
+					},
+				},
+			],
 		},
 	}
 }

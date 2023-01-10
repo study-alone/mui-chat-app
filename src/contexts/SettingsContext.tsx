@@ -239,7 +239,8 @@ const SettingsProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 
 				// Reset
 				onResetSetting,
-			}}>
+			}}
+		>
 			{children}
 		</SettingsContext.Provider>
 	)

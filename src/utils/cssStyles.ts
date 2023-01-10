@@ -34,9 +34,9 @@ interface CSSStyleImageProps {
 export default function cssStyles(theme: Theme) {
 	return {
 		bgBlur: (props: CSSStyleBlurProps) => {
-			const color = props?.color || theme?.palette.background.default || '#000000'
-			const blur = props?.blur || 6
-			const opacity = props?.opacity || 0.8
+			const color = props.color || theme?.palette.background.default || '#000000'
+			const blur = props.blur || 6
+			const opacity = props.opacity || 0.8
 
 			return {
 				backdropFilter: `blur(${blur}px)`,
@@ -46,8 +46,8 @@ export default function cssStyles(theme: Theme) {
 		},
 		bgGradient: (props: CSSStyleGradientProps) => {
 			const direction = getDirection(props?.direction)
-			const startColor = props?.startColor || `${alpha('#000000', 0)} 0%`
-			const endColor = props?.endColor || '#000000 75%'
+			const startColor = props.startColor || `${alpha('#000000', 0)} 0%`
+			const endColor = props.endColor || '#000000 75%'
 
 			return {
 				background: `linear-gradient(${direction}, ${startColor}, ${endColor});`,
@@ -56,8 +56,8 @@ export default function cssStyles(theme: Theme) {
 		bgImage: (props: CSSStyleImageProps) => {
 			const url = props?.url || '/assets/bg_gradient.jpg'
 			const direction = getDirection(props?.direction)
-			const startColor = props?.startColor || alpha(theme?.palette.grey[900] || '#000000', 0.88)
-			const endColor = props?.endColor || alpha(theme?.palette.grey[900] || '#000000', 0.88)
+			const startColor = props?.startColor || alpha(theme.palette.grey[900] || '#000000', 0.88)
+			const endColor = props?.endColor || alpha(theme.palette.grey[900] || '#000000', 0.88)
 
 			return {
 				background: `linear-gradient(${direction}, ${startColor}, ${endColor}), url(${url})`,

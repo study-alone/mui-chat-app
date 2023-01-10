@@ -18,7 +18,8 @@ export const DocumentMessage: React.FC<DocumentMessageProps> = ({ incoming, mess
 					backgroundColor: incoming ? palette.background.default : palette.primary.main,
 					borderRadius: 1.5,
 					width: 'max-content',
-				}}>
+				}}
+			>
 				<Stack spacing={2}>
 					<Stack
 						p={2}
@@ -28,7 +29,8 @@ export const DocumentMessage: React.FC<DocumentMessageProps> = ({ incoming, mess
 						sx={{
 							backgroundColor: palette.background.paper,
 							borderRadius: 1,
-						}}>
+						}}
+					>
 						<Image size={48} />
 						<Typography variant="caption">Abstract.png</Typography>
 						<IconButton>

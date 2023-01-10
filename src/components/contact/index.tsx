@@ -66,7 +66,8 @@ export const Contact: React.FC = () => {
 						sx={{ height: '100%', p: 2 }}
 						alignItems="center"
 						justifyContent="space-between"
-						spacing={3}>
+						spacing={3}
+					>
 						<Typography variant="subtitle2">Contact Info</Typography>
 						<IconButton onClick={handleClose}>
 							<X />
@@ -76,7 +77,8 @@ export const Contact: React.FC = () => {
 				<Stack
 					sx={{ height: '100%', position: 'relative', flexGrow: 1, overflowY: 'scroll' }}
 					p={3}
-					spacing={3}>
+					spacing={3}
+				>
 					<Stack alignItems="center" direction="row" spacing={2}>
 						<Avatar src={userInfo.avatar} alt={userInfo.name} sx={{ width: 64, height: 64 }} />
 						<Stack spacing={0.5}>

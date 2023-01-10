@@ -20,7 +20,7 @@ const BoxStyle = styled(CardActionArea)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function SettingColorPresets() {
+export const SettingColorPresets = () => {
 	const { themeColorPresets, onChangeColor, colorOption } = useSettings()
 
 	return (
@@ -40,7 +40,8 @@ export default function SettingColorPresets() {
 										border: `solid 2px ${colorValue}`,
 										boxShadow: `inset 0 4px 8px 0 ${alpha(colorValue, 0.24)}`,
 									}),
-								}}>
+								}}
+							>
 								<Box
 									sx={{
 										width: 24,

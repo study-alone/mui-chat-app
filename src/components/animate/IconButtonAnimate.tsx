@@ -40,7 +40,8 @@ const AnimateWrap: React.FC<AnimateWrapProps> = ({ size, children }) => {
 			variants={(isSmall && varSmall) || (isLarge && varLarge) || varMedium}
 			sx={{
 				display: 'inline-flex',
-			}}>
+			}}
+		>
 			{children}
 		</Box>
 	)

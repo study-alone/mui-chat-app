@@ -117,7 +117,8 @@ const Shortcuts: React.FC<ShorcutsProps> = ({ onClose }) => {
 			onClose={handleClose}
 			sx={{ p: 4 }}
 			keepMounted
-			TransitionComponent={Transition}>
+			TransitionComponent={Transition}
+		>
 			<DialogTitle>Keyboard Shortcuts</DialogTitle>
 			<DialogContent sx={{ mt: 4 }}>
 				<Grid container spacing={3}>
@@ -128,7 +129,8 @@ const Shortcuts: React.FC<ShorcutsProps> = ({ onClose }) => {
 								justifyContent="space-between"
 								spacing={3}
 								direction="row"
-								alignItems="center">
+								alignItems="center"
+							>
 								<Typography variant="caption" fontSize={14}>
 									{title}
 								</Typography>
@@ -138,7 +140,8 @@ const Shortcuts: React.FC<ShorcutsProps> = ({ onClose }) => {
 											key={`shortcut-key-${title}-${item}`}
 											disabled
 											variant="contained"
-											sx={{ color: '#212121' }}>
+											sx={{ color: '#212121' }}
+										>
 											{item}
 										</Button>
 									))}

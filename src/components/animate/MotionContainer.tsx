@@ -19,7 +19,8 @@ const MotionContainer: React.FC<MotionContainerProp> = ({ animate, action = fals
 				initial={false}
 				animate={animate ? 'animate' : 'exit'}
 				variants={varContainer()}
-				{...other}>
+				{...other}
+			>
 				{children}
 			</Box>
 		)

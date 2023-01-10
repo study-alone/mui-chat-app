@@ -33,7 +33,8 @@ export const MessageOptions: React.FC = () => {
 				aria-haspopup="true"
 				aria-expanded={open ? 'true' : undefined}
 				disableRipple
-				onClick={handleClick}>
+				onClick={handleClick}
+			>
 				<DotsThreeVertical size={20} />
 			</IconButton>
 			<Menu
@@ -41,7 +42,8 @@ export const MessageOptions: React.FC = () => {
 				anchorEl={element}
 				open={open}
 				onClose={handleClose}
-				MenuListProps={{ 'aria-labelledby': 'basic-button' }}>
+				MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+			>
 				<Stack spacing={1} px={1}>
 					{Message_options.map((item) => (
 						<MenuItem
@@ -49,7 +51,8 @@ export const MessageOptions: React.FC = () => {
 							data-value={item.title}
 							disabled={item.title === selected}
 							component={Button}
-							onClick={handleSelect}>
+							onClick={handleSelect}
+						>
 							{item.title}
 						</MenuItem>
 					))}

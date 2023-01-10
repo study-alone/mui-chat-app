@@ -1,7 +1,7 @@
 import React from 'react'
 import { ModalDispatchContext } from '@lib/modal'
 import type { ModalDispatch } from '@lib/modal'
-import { dialog } from '@components/dialog'
+// import { dialog } from '@components/dialog'
 
 export const useDialog = () => {
 	const { open, close } = React.useContext(ModalDispatchContext)

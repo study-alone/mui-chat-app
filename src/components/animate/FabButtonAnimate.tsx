@@ -41,7 +41,8 @@ const FabButtonAnimate = forwardRef<HTMLButtonElement, FabButtonAnimateProps>(
 							bgcolor: theme.palette[color].dark,
 						},
 						...sx,
-					}}>
+					}}
+				>
 					{children}
 				</Fab>
 			</AnimateWrap>
@@ -88,7 +89,8 @@ const AnimateWrap: React.FC<AnimateWrapProps> = ({ size, children, sxWrap }) => 
 			sx={{
 				display: 'inline-flex',
 				...sxWrap,
-			}}>
+			}}
+		>
 			{children}
 		</Box>
 	)

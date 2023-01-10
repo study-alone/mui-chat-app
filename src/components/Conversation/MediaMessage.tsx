@@ -18,7 +18,8 @@ export const MediaMessage: React.FC<MediaMessageProps> = ({ incoming, img, messa
 					backgroundColor: incoming ? palette.background.default : palette.primary.main,
 					borderRadius: 1.5,
 					width: 'max-content',
-				}}>
+				}}
+			>
 				<Stack spacing={1}>
 					<img src={img} alt={message} style={{ maxHeight: 210, borderRadius: '10px' }} />
 				</Stack>

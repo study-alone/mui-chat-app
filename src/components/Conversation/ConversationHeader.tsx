@@ -18,13 +18,15 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({ fullName
 				alignItems="center"
 				direction="row"
 				justifyContent="space-between"
-				sx={{ width: '100%', height: '100%' }}>
+				sx={{ width: '100%', height: '100%' }}
+			>
 				<Stack direction="row" spacing={2} onClick={toggle}>
 					<Box>
 						<BadgeStyled
 							overlap="circular"
 							variant="dot"
-							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+						>
 							<Avatar alt={fullName} src={avatar} />
 						</BadgeStyled>
 					</Box>

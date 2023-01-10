@@ -50,7 +50,8 @@ export const DebugObserver: React.FC<{ position: Position }> = ({ position }) =>
 				boxShadow: '3px 3px 6px 1px rgba(0, 0, 0, 0.3)',
 				width: '80px',
 			}}
-			onClick={onClick}>
+			onClick={onClick}
+		>
 			<RecoilLogo />
 		</button>
 	)

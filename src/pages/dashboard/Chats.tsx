@@ -87,7 +87,8 @@ const ChatItem = memo<ChatItemProps>(({ id, img, name, msg, time, unread, pinned
 						<BadgeStyled
 							variant="dot"
 							overlap="circular"
-							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+						>
 							<Avatar src={img} />
 						</BadgeStyled>
 					) : (

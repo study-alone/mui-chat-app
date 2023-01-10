@@ -24,7 +24,8 @@ const TextAnimate: React.FC<TextAnimateProps> = ({ text, variants, sx, ...other 
 				display: 'inline-flex',
 				...sx,
 			}}
-			{...other}>
+			{...other}
+		>
 			{text.split('').map((letter, index) => (
 				<m.span key={index} variants={variants || varFade().inUp}>
 					{letter}

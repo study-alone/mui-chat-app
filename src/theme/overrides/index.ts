@@ -40,6 +40,7 @@ import ToggleButton from '@theme/overrides/ToggleButton'
 import Tooltip from '@theme/overrides/Tooltip'
 import TreeView from '@theme/overrides/TreeView'
 import Typography from '@theme/overrides/Typography'
+import Divider from '@theme/overrides/Divider'
 
 import type { Theme } from '@mui/material/styles'
 
@@ -68,6 +69,7 @@ export default function ComponentsOverrides(theme: Theme) {
 		Avatar(theme),
 		Slider(theme),
 		Drawer(theme),
+		Divider(theme),
 		Stepper(theme),
 		Tooltip(theme),
 		Popover(theme),

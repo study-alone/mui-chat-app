@@ -43,14 +43,16 @@ export const DialogAnimate: React.FC<DialogAnimateProps> = ({
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',
-							}}>
+							}}
+						>
 							<Box onClick={onClose} sx={{ width: '100%', height: '100%', position: 'fixed' }} />
 							<Paper sx={sx} {...props}>
 								{props.children}
 							</Paper>
 						</Box>
 					)}
-					{...other}>
+					{...other}
+				>
 					{children}
 				</Dialog>
 			)}

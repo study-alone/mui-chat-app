@@ -20,6 +20,9 @@ const GeneralApp = generatePage(lazy(() => import('@pages/dashboard/GeneralApp')
 const Page404 = generatePage(lazy(() => import('@pages/Page404')))
 const Settings = generatePage(lazy(() => import('@pages/dashboard/Settings')))
 const Login = generatePage(lazy(() => import('@pages/auth/Login')))
+const Register = generatePage(lazy(() => import('@pages/auth/Register')))
+const ResetPassword = generatePage(lazy(() => import('@pages/auth/ResetPassword')))
+const NewPassword = generatePage(lazy(() => import('@pages/auth/NewPassword')))
 
 export default function Router() {
 	return useRoutes([
@@ -27,10 +30,10 @@ export default function Router() {
 			path: '/auth',
 			element: <MainLayout />,
 			children: [
-				{
-					path: 'login',
-					element: <Login />,
-				},
+				{ path: 'login', element: <Login /> },
+				{ path: 'register', element: <Register /> },
+				{ path: 'reset-password', element: <ResetPassword /> },
+				{ path: 'new-password', element: <NewPassword /> },
 			],
 		},
 		{

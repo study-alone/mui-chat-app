@@ -58,7 +58,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ notDefault, open, onToggle 
 							color: 'primary.main',
 							bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.hoverOpacity),
 						},
-					}}>
+					}}
+				>
 					<Iconify icon="eva:options-2-fill" width={20} height={20} />
 				</IconButtonAnimate>
 			</Tooltip>

@@ -19,14 +19,16 @@ export const ReplyMessage: React.FC<ReplyMessageProp> = ({ incoming, message, re
 					backgroundColor: incoming ? palette.background.default : palette.primary.main,
 					borderRadius: 1.5,
 					width: 'max-content',
-				}}>
+				}}
+			>
 				<Stack spacing={2}>
 					<Stack
 						p={2}
 						direction="column"
 						spacing={3}
 						alignItems="center"
-						sx={{ backgroundColor: palette.background.paper, borderRadius: 1 }}>
+						sx={{ backgroundColor: palette.background.paper, borderRadius: 1 }}
+					>
 						<Typography variant="body2" color={palette.text.primary}>
 							{message}
 						</Typography>

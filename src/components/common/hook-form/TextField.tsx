@@ -1,12 +1,39 @@
-import { forwardRef } from 'react'
+import { forwardRef, memo, useMemo, useState } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
-import { TextField as MUITextField } from '@mui/material'
+import { IconButton, TextField as MUITextField } from '@mui/material'
 
-import type { TextFieldProps } from '@mui/material'
+import type { TextFieldProps as MuiTextFieldProps } from '@mui/material'
+import { Eye, EyeSlash } from 'phosphor-react'
 
-export const TextField = forwardRef<HTMLInputElement, WithRequiredProperty<TextFieldProps, 'name' | 'helperText'>>(
-	({ name, helperText, ...restProps }, ref) => {
+const PasswordVisibleIcon: React.FC<{ onClick: () => void; show: boolean }> = memo(({ onClick, show }) => {
+	return <IconButton onClick={onClick}>{show ? <Eye /> : <EyeSlash />}</IconButton>
+})
+PasswordVisibleIcon.displayName = 'PasswordVisibleIcon'
+
+type TextFieldProps = MuiTextFieldProps
+
+export const TextField = forwardRef<HTMLInputElement, WithRequiredProperty<TextFieldProps, 'name'>>(
+	({ name, helperText, type, ...restProps }, ref) => {
 		const { control } = useFormContext()
+		const [showPassword, setShowPassword] = useState(false)
+
+		const conditionalProps = useMemo(() => {
+			if (type === 'password') {
+				return {
+					InputProps: {
+						endAdornment: (
+							<PasswordVisibleIcon onClick={() => setShowPassword((prev) => !prev)} show={showPassword} />
+						),
+					},
+				}
+			}
+			return {}
+		}, [showPassword, type])
+
+		const typeProp = useMemo(() => {
+			const isPassword = type === 'password'
+			return isPassword ? (showPassword ? 'text' : 'password') : 'text'
+		}, [showPassword, type])
 
 		return (
 			<Controller
@@ -15,10 +42,12 @@ export const TextField = forwardRef<HTMLInputElement, WithRequiredProperty<TextF
 				render={({ field, fieldState: { error } }) => (
 					<MUITextField
 						{...field}
+						type={typeProp}
 						fullWidth
 						error={!!error}
 						helperText={error ? error.message : helperText}
 						{...restProps}
+						{...conditionalProps}
 						ref={ref}
 					/>
 				)}

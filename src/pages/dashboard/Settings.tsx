@@ -91,7 +91,8 @@ const Settings: React.FC = () => {
 					width: 320,
 					backgroundColor: theme.palette.mode === 'light' ? '#F8FAFF' : theme.palette.background.default,
 					boxShadow: theme.shadows[10],
-				}}>
+				}}
+			>
 				<Stack p={4} spacing={5}>
 					{/* Header */}
 					<Stack direction="row" alignItems="center" spacing={3}>
