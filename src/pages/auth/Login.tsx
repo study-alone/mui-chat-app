@@ -1,5 +1,5 @@
-import { Divider, Link, Stack, Typography } from '@mui/material'
-import { AuthSocial, LoginForm } from '@components/common'
+import { Divider, Stack, Typography } from '@mui/material'
+import { AuthSocial, LoginForm, Link } from '@components/common'
 
 const Login: React.FC = () => {
 	return (
@@ -8,7 +8,7 @@ const Login: React.FC = () => {
 				<Typography variant="h4">Login to Tawk</Typography>
 				<Stack direction="row" spacing={0.5}>
 					<Typography variant="body2">New user?</Typography>
-					<Link href="/auth/register" variant="subtitle2">
+					<Link to="/auth/register" variant="subtitle2">
 						Create an account
 					</Link>
 				</Stack>

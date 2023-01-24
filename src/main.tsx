@@ -1,11 +1,12 @@
-import App from './App'
+import { createApp } from '@lib/createApp'
 import reportWebVitals from './reportWebVitals'
-import { createApp } from './lib/createApp'
+import App from './App'
 
 createApp({
 	element: <App />,
 	recoilDebuggerPosition: 'top-left',
 	containerId: 'root',
+	useHistory: true,
 })
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,5 +1,5 @@
-import { Box, Link, Stack, Typography } from '@mui/material'
-import { NewPasswordForm } from '@components/common'
+import { Box, Stack, Typography } from '@mui/material'
+import { NewPasswordForm, Link } from '@components/common'
 import { CaretLeft } from 'phosphor-react'
 
 const NewPassword: React.FC = () => {
@@ -14,7 +14,7 @@ const NewPassword: React.FC = () => {
 			{/* New Password Form */}
 			<NewPasswordForm />
 			<Link
-				href="/auth/login"
+				to="/auth/login"
 				color="inherit"
 				variant="subtitle2"
 				sx={{ mt: 3, mx: 'auto', alignItems: 'center', display: 'inline-flex' }}

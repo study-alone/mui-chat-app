@@ -1,5 +1,5 @@
-import { ResetPasswordForm } from '@components/common'
-import { Link, Stack, Typography } from '@mui/material'
+import { ResetPasswordForm, Link } from '@components/common'
+import { Stack, Typography } from '@mui/material'
 import { CaretLeft } from 'phosphor-react'
 
 const ResetPassword: React.FC = () => {
@@ -15,7 +15,7 @@ const ResetPassword: React.FC = () => {
 			{/* Reset Password Form */}
 			<ResetPasswordForm />
 			<Link
-				href="/auth/login"
+				to="/auth/login"
 				color="inherit"
 				variant="subtitle2"
 				sx={{ mt: 3, mx: 'auto', alignItems: 'center', display: 'inline-flex' }}

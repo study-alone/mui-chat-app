@@ -1,9 +1,11 @@
-import { Alert, Button, Link, Stack } from '@mui/material'
+import { Alert, Button, Stack } from '@mui/material'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FormProvider, useForm } from 'react-hook-form'
-import type { ErrorOption } from 'react-hook-form'
 import { TextField } from '@components/common/hook-form'
+import { Link } from '@components/common'
+
+import type { ErrorOption } from 'react-hook-form'
 
 export const LoginForm: React.FC = () => {
 	const loginSchema = yup.object().shape({
@@ -47,7 +49,7 @@ export const LoginForm: React.FC = () => {
 					<TextField name="password" label="Password" variant="outlined" type="password" helperText="" />
 				</Stack>
 				<Stack alignItems="flex-end" sx={{ my: 2 }}>
-					<Link variant="body2" color="inherit" underline="always" href="/auth/reset-password">
+					<Link variant="body2" color="inherit" underline="always" to="/auth/reset-password">
 						Forgot Password?
 					</Link>
 				</Stack>
