@@ -90,7 +90,9 @@ class DisableScroll {
 	handleKeydown = (event: KeyboardEvent) => {
 		let keys = this.options.keyboardKeys
 
-		if (['INPUT', 'TEXTAREA'].includes((event.target as HTMLInputElement | HTMLTextAreaElement).tagName)) {
+		if (
+			['INPUT', 'TEXTAREA'].includes((event.target as HTMLInputElement | HTMLTextAreaElement).tagName)
+		) {
 			keys = keys.filter((key) => !this.options.authorizedInInputs.includes(key))
 		}
 

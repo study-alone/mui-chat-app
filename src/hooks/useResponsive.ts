@@ -7,7 +7,12 @@ import type { Breakpoint } from '@mui/material/styles'
 // ----------------------------------------------------------------------
 
 type Query = 'up' | 'down' | 'between' | 'only'
-export default function useResponsive(query: Query, key: Breakpoint, start: Breakpoint = 'md', end: Breakpoint = 'md') {
+export default function useResponsive(
+	query: Query,
+	key: Breakpoint,
+	start: Breakpoint = 'md',
+	end: Breakpoint = 'md',
+) {
 	const theme = useTheme()
 	const mediaUp = useMediaQuery(theme.breakpoints.up(key))
 	const mediaDown = useMediaQuery(theme.breakpoints.down(key))

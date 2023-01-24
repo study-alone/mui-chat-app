@@ -22,7 +22,10 @@ export const TextField = forwardRef<HTMLInputElement, WithRequiredProperty<TextF
 				return {
 					InputProps: {
 						endAdornment: (
-							<PasswordVisibleIcon onClick={() => setShowPassword((prev) => !prev)} show={showPassword} />
+							<PasswordVisibleIcon
+								onClick={() => setShowPassword((prev) => !prev)}
+								show={showPassword}
+							/>
 						),
 					},
 				}

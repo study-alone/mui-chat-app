@@ -46,7 +46,13 @@ export const LoginForm: React.FC = () => {
 				<Stack spacing={3}>
 					{!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 					<TextField name="email" label="Email address" variant="outlined" helperText="" />
-					<TextField name="password" label="Password" variant="outlined" type="password" helperText="" />
+					<TextField
+						name="password"
+						label="Password"
+						variant="outlined"
+						type="password"
+						helperText=""
+					/>
 				</Stack>
 				<Stack alignItems="flex-end" sx={{ my: 2 }}>
 					<Link variant="body2" color="inherit" underline="always" to="/auth/reset-password">

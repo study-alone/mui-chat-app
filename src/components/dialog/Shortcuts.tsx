@@ -111,7 +111,7 @@ const Shortcuts: React.FC<ShorcutsProps> = ({ onClose }) => {
 
 	return (
 		<Dialog
-			open={true}
+			open
 			fullWidth
 			maxWidth="md"
 			onClose={handleClose}

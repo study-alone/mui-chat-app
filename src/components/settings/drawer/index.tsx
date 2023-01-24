@@ -45,8 +45,15 @@ const RootStyle = styled(m.div)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function SettingsDrawer() {
-	const { themeMode, themeLayout, themeStretch, themeContrast, themeDirection, themeColorPresets, onResetSetting } =
-		useSettings()
+	const {
+		themeMode,
+		themeLayout,
+		themeStretch,
+		themeContrast,
+		themeDirection,
+		themeColorPresets,
+		onResetSetting,
+	} = useSettings()
 	const [open, setOpen] = useState(false)
 	const notDefault = [
 		themeMode !== defaultSettings.themeMode,
