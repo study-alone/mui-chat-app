@@ -12,7 +12,9 @@ type NewPasswordScheme = {
 
 const newPasswordScheme = yupResolver(
 	Yup.object().shape({
-		newPassword: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+		newPassword: Yup.string()
+			.min(6, 'Password must be at least 6 characters')
+			.required('Password is required'),
 		confirmPassword: Yup.string()
 			.required('Password is required')
 			.oneOf([Yup.ref('newPassword'), null], 'Password must match'),
@@ -49,8 +51,18 @@ export const NewPasswordForm: React.FC = () => {
 								: ''}
 						</Alert>
 					)}
-					<TextField name="userName" label="User Name" defaultValue="Jone Doe" autoComplete="username" />
-					<TextField name="newPassword" label="New Password" type="password" autoComplete="new-password" />
+					<TextField
+						name="userName"
+						label="User Name"
+						defaultValue="Jone Doe"
+						autoComplete="username"
+					/>
+					<TextField
+						name="newPassword"
+						label="New Password"
+						type="password"
+						autoComplete="new-password"
+					/>
 					<TextField
 						name="confirmPassword"
 						label="Confirm Password"

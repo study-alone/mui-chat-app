@@ -24,6 +24,7 @@ const Register = generatePage(lazy(() => import('@pages/auth/Register')))
 const ResetPassword = generatePage(lazy(() => import('@pages/auth/ResetPassword')))
 const NewPassword = generatePage(lazy(() => import('@pages/auth/NewPassword')))
 const Group = generatePage(lazy(() => import('@pages/dashboard/Group')))
+const Call = generatePage(lazy(() => import('@pages/dashboard/Call')))
 
 export default function Router() {
 	return useRoutes([
@@ -45,6 +46,7 @@ export default function Router() {
 				{ path: 'app', element: <GeneralApp /> },
 				{ path: 'settings', element: <Settings /> },
 				{ path: 'group', element: <Group /> },
+				{ path: 'call', element: <Call /> },
 				{ path: '404', element: <Page404 /> },
 				{ path: '*', element: <Navigate to="/404" replace /> },
 			],

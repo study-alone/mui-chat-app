@@ -27,7 +27,14 @@ const MotionContainer: React.FC<MotionContainerProp> = ({ animate, action = fals
 	}
 
 	return (
-		<Box component={m.div} initial="initial" animate="animate" exit="exit" variants={varContainer()} {...other}>
+		<Box
+			component={m.div}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			variants={varContainer()}
+			{...other}
+		>
 			{children}
 		</Box>
 	)

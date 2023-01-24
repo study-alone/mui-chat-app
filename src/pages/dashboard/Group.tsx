@@ -2,6 +2,9 @@ import { Box, Divider, IconButton, Link, Stack, styled, Typography } from '@mui/
 import { ChatItem, SearchInput, SimpleBarStyle } from '@components/common'
 import { Plus } from 'phosphor-react'
 import { ChatList } from 'src/data'
+import { useCallback } from 'react'
+import { useDialog } from '@lib/modal'
+import { dialog } from '@components/dialog'
 
 const Container = styled(Box)(({ theme }) => {
 	const isLight = theme.palette.mode === 'light'
@@ -19,6 +22,12 @@ const PlusButton = styled(Plus)(({ theme }) => ({
 }))
 
 const Group: React.FC = () => {
+	const { openModal } = useDialog()
+
+	const handleOpenCreateGroup = useCallback(() => {
+		openModal(dialog.CreateGroup)
+	}, [openModal])
+
 	return (
 		<Stack direction="row" sx={{ width: '100%' }}>
 			{/* Left */}
@@ -34,7 +43,7 @@ const Group: React.FC = () => {
 						<Typography variant="subtitle2" component={Link}>
 							Create New Group
 						</Typography>
-						<IconButton>
+						<IconButton onClick={handleOpenCreateGroup}>
 							<PlusButton />
 						</IconButton>
 					</Stack>
@@ -62,6 +71,7 @@ const Group: React.FC = () => {
 				</Stack>
 			</Container>
 			{/* Right */}
+			{/* TODO: Reuse Conversation component */}
 		</Stack>
 	)
 }

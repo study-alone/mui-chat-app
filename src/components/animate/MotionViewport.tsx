@@ -12,7 +12,11 @@ interface MotionViewportProps extends React.PropsWithChildren {
 	disableAnimatedMobile?: boolean
 }
 
-const MotionViewport: React.FC<MotionViewportProps> = ({ children, disableAnimatedMobile = false, ...other }) => {
+const MotionViewport: React.FC<MotionViewportProps> = ({
+	children,
+	disableAnimatedMobile = false,
+	...other
+}) => {
 	const isMobile = useResponsive('down', 'sm')
 
 	if (isMobile && disableAnimatedMobile) {

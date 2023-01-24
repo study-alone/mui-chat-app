@@ -56,7 +56,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ notDefault, open, onToggle 
 						transition: (theme) => theme.transitions.create('all'),
 						'&:hover': {
 							color: 'primary.main',
-							bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+							bgcolor: (theme) =>
+								alpha(theme.palette.primary.main, theme.palette.action.hoverOpacity),
 						},
 					}}
 				>
