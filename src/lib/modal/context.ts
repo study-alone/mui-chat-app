@@ -9,7 +9,7 @@ export type ModalState = {
 }
 
 export type ModalDispatch = {
-	open(Component: ComponentType, props?: React.ComponentProps<ComponentType>): void
+	open(Component: ComponentType, props: React.ComponentProps<ComponentType>): void
 	close(Component: ComponentType): void
 }
 
