@@ -1,18 +1,18 @@
-import { Box, Divider, IconButton, Stack } from '@mui/material'
-import { GithubLogo, GoogleLogo, TwitterLogo } from 'phosphor-react'
+import { Box, IconButton, Stack } from '@mui/material'
+import { Icon } from '@components/common'
 
 export const AuthSocial: React.FC = () => {
 	return (
 		<Box>
 			<Stack direction="row" justifyContent="center" spacing={2}>
 				<IconButton>
-					<GoogleLogo color="#DF3E30" />
+					<Icon.GoogleLogo color="#DF3E30" />
 				</IconButton>
 				<IconButton>
-					<GithubLogo />
+					<Icon.GithubLogo />
 				</IconButton>
 				<IconButton>
-					<TwitterLogo color="#1C9CEA" />
+					<Icon.TwitterLogo color="#1C9CEA" />
 				</IconButton>
 			</Stack>
 		</Box>

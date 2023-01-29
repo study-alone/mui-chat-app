@@ -1,5 +1,5 @@
+import { Icon } from '@components/common'
 import { Button, IconButton, Menu, MenuItem, Stack } from '@mui/material'
-import { DotsThreeVertical } from 'phosphor-react'
 import { useCallback, useState } from 'react'
 import { Message_options } from 'src/data'
 
@@ -35,7 +35,7 @@ export const MessageOptions: React.FC = () => {
 				disableRipple
 				onClick={handleClick}
 			>
-				<DotsThreeVertical size={20} />
+				<Icon.DotsThreeVertical size={20} />
 			</IconButton>
 			<Menu
 				id="message-options"

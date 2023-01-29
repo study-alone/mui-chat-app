@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from 'react'
 import { faker } from '@faker-js/faker'
 import { Avatar, Box, Divider, IconButton, Stack, Typography, useTheme } from '@mui/material'
-import { Bell, CaretLeft, Image, Info, Key, Keyboard, Lock, Note, PencilCircle } from 'phosphor-react'
 import { useDialog } from '@lib/modal'
 import { dialog } from '@components/dialog'
+import { Icon } from '@components/common'
 
 const Settings: React.FC = () => {
 	const theme = useTheme()
@@ -20,7 +20,7 @@ const Settings: React.FC = () => {
 		return [
 			{
 				id: 0,
-				Icon: Bell,
+				Icon: Icon.Bell,
 				title: 'Notifications',
 				onClick: () => {
 					/** nothing */
@@ -28,7 +28,7 @@ const Settings: React.FC = () => {
 			},
 			{
 				id: 1,
-				Icon: Lock,
+				Icon: Icon.Lock,
 				title: 'Privacy',
 				onClick: () => {
 					/** nothing */
@@ -36,7 +36,7 @@ const Settings: React.FC = () => {
 			},
 			{
 				id: 2,
-				Icon: Key,
+				Icon: Icon.Key,
 				title: 'Security',
 				onClick: () => {
 					/** nothing */
@@ -44,13 +44,13 @@ const Settings: React.FC = () => {
 			},
 			{
 				id: 3,
-				Icon: PencilCircle,
+				Icon: Icon.PencilCircle,
 				title: 'Theme',
 				onClick: handleOpenTheme,
 			},
 			{
 				id: 4,
-				Icon: Image,
+				Icon: Icon.Image,
 				title: 'Chat Wallpaper',
 				onClick: () => {
 					/** nothing */
@@ -58,7 +58,7 @@ const Settings: React.FC = () => {
 			},
 			{
 				id: 5,
-				Icon: Note,
+				Icon: Icon.Note,
 				title: 'Request Account Info',
 				onClick: () => {
 					/** nothing */
@@ -66,13 +66,13 @@ const Settings: React.FC = () => {
 			},
 			{
 				id: 6,
-				Icon: Keyboard,
+				Icon: Icon.Keyboard,
 				title: 'Keyboard Shortcuts',
 				onClick: handleOpenShortcuts,
 			},
 			{
 				id: 7,
-				Icon: Info,
+				Icon: Icon.Info,
 				title: 'Help',
 				onClick: () => {
 					/** nothing */
@@ -89,7 +89,8 @@ const Settings: React.FC = () => {
 					overflowY: 'scroll',
 					height: '100vh',
 					width: 320,
-					backgroundColor: theme.palette.mode === 'light' ? '#F8FAFF' : theme.palette.background.default,
+					backgroundColor:
+						theme.palette.mode === 'light' ? '#F8FAFF' : theme.palette.background.default,
 					boxShadow: theme.shadows[10],
 				}}
 			>
@@ -97,7 +98,7 @@ const Settings: React.FC = () => {
 					{/* Header */}
 					<Stack direction="row" alignItems="center" spacing={3}>
 						<IconButton>
-							<CaretLeft size={24} color="#4b4b4b" />
+							<Icon.CaretLeft size={24} color="#4b4b4b" />
 						</IconButton>
 						<Typography variant="h6">Settings</Typography>
 					</Stack>

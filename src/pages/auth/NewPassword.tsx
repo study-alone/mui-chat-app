@@ -1,6 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material'
-import { NewPasswordForm, Link } from '@components/common'
-import { CaretLeft } from 'phosphor-react'
+import { NewPasswordForm, Link, Icon } from '@components/common'
 
 const NewPassword: React.FC = () => {
 	return (
@@ -19,7 +18,7 @@ const NewPassword: React.FC = () => {
 				variant="subtitle2"
 				sx={{ mt: 3, mx: 'auto', alignItems: 'center', display: 'inline-flex' }}
 			>
-				<CaretLeft />
+				<Icon.CaretLeft />
 				Return to sign in
 			</Link>
 		</Box>

@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react'
 import { useContactToggle } from '@hooks/useContactToggle'
-import { Box, Grid, IconButton, Stack, Tab, Typography } from '@mui/material'
+import { Grid, IconButton, Stack, Tab, Typography } from '@mui/material'
 import { HeaderStyled, SharedMessagesStyled } from '@components/contact/styled'
-import { CaretLeft, X } from 'phosphor-react'
 import { Tabs } from '@mui/material'
 import { faker } from '@faker-js/faker'
 import { SHARED_DOCS, SHARED_LINKS } from 'src/data'
 import { LinkMessage } from '@components/Conversation/LinkMessage'
 import { DocumentMessage } from '@components/Conversation/DocumentMessage'
+import { Icon } from '@components/common'
 
 type TabValue = 'media' | 'link' | 'docs'
 
@@ -38,7 +38,7 @@ const SharedMessages: React.FC = () => {
 			<HeaderStyled>
 				<Stack direction="row" sx={{ height: '100%', p: 2 }} alignItems="center" spacing={3}>
 					<IconButton onClick={handleBackward}>
-						<CaretLeft />
+						<Icon.CaretLeft />
 					</IconButton>
 					<Typography variant="subtitle2">Shared Message</Typography>
 				</Stack>
@@ -48,7 +48,11 @@ const SharedMessages: React.FC = () => {
 				<Tab label="Link" value="link" />
 				<Tab label="Docs" value="docs" />
 			</Tabs>
-			<Stack sx={{ position: 'relative', flexGrow: 1, flexShrink: 1, overflowY: 'scroll' }} p={3} spacing={3}>
+			<Stack
+				sx={{ position: 'relative', flexGrow: 1, flexShrink: 1, overflowY: 'scroll' }}
+				p={3}
+				spacing={3}
+			>
 				{tabValue === 'media' && (
 					<Grid container spacing={2}>
 						{medias.map((item) => (
@@ -59,7 +63,9 @@ const SharedMessages: React.FC = () => {
 					</Grid>
 				)}
 				{tabValue === 'link' &&
-					SHARED_LINKS.map((item, index) => <LinkMessage {...item} key={`shared-message-link-${index}`} />)}
+					SHARED_LINKS.map((item, index) => (
+						<LinkMessage {...item} key={`shared-message-link-${index}`} />
+					))}
 				{tabValue === 'docs' &&
 					SHARED_DOCS.map((item, index) => (
 						<DocumentMessage {...item} key={`shared-message-document-${index}`} />

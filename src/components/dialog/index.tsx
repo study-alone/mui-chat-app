@@ -19,4 +19,5 @@ export const dialog = {
 	Delete: lazy(() => import('@components/dialog/Delete')),
 	Shortcuts: lazy(() => import('@components/dialog/Shortcuts')),
 	CreateGroup: lazy(() => import('@components/dialog/CreateGroup')),
+	StartCall: lazy(() => import('@components/dialog/StartCall')),
 }

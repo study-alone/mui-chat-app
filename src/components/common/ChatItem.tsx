@@ -1,13 +1,6 @@
-import { Avatar, Badge, Box, Stack, styled, Typography } from '@mui/material'
+import { Avatar, Badge, Box, Stack, Typography } from '@mui/material'
 import { memo } from 'react'
-import { BadgeStyled } from '@components/common'
-
-const ChatItemStyled = styled(Box)(({ theme }) => ({
-	width: '100%',
-	borderRadius: 1 * 8,
-	backgroundColor: theme.palette.mode === 'light' ? '#fff' : theme.palette.background.paper,
-	boxShadow: theme.shadows[5],
-}))
+import { BadgeStyled, ChatItemStyled, OptionalWrapper } from '@components/common'
 
 interface ChatItemProps {
 	id: number
@@ -23,20 +16,18 @@ interface ChatItemProps {
 export const ChatItem = memo<ChatItemProps>(({ id, img, name, msg, time, unread, pinned, online }) => {
 	return (
 		<Box sx={{ pb: 2 }}>
-			<ChatItemStyled p={2}>
+			<ChatItemStyled>
 				<Stack direction="row" alignItems="center" justifyContent="space-between">
 					<Stack direction="row" spacing={2}>
-						{online ? (
-							<BadgeStyled
-								variant="dot"
-								overlap="circular"
-								anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-							>
-								<Avatar src={img} />
-							</BadgeStyled>
-						) : (
+						<OptionalWrapper
+							condition={online}
+							component={BadgeStyled}
+							variant="dot"
+							overlap="circular"
+							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+						>
 							<Avatar src={img} />
-						)}
+						</OptionalWrapper>
 						<Stack spacing={0.3}>
 							<Typography variant="subtitle2">{name}</Typography>
 							<Typography variant="caption">{msg}</Typography>

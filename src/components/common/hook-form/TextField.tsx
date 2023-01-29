@@ -1,12 +1,12 @@
 import { forwardRef, memo, useMemo, useState } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import { IconButton, TextField as MUITextField } from '@mui/material'
+import { Icon } from '@components/common'
 
 import type { TextFieldProps as MuiTextFieldProps } from '@mui/material'
-import { Eye, EyeSlash } from 'phosphor-react'
 
 const PasswordVisibleIcon: React.FC<{ onClick: () => void; show: boolean }> = memo(({ onClick, show }) => {
-	return <IconButton onClick={onClick}>{show ? <Eye /> : <EyeSlash />}</IconButton>
+	return <IconButton onClick={onClick}>{show ? <Icon.Eye /> : <Icon.EyeSlash />}</IconButton>
 })
 PasswordVisibleIcon.displayName = 'PasswordVisibleIcon'
 

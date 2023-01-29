@@ -1,22 +1,74 @@
 import { faker } from '@faker-js/faker'
-import { ChatCircleDots, Gear, GearSix, Phone, SignOut, User, Users } from 'phosphor-react'
+import { Icon } from '@components/common'
 
 const Profile_Menu = [
-	{ title: 'Profile', Icon: User },
-	{ title: 'Settings', Icon: Gear },
-	{ title: 'SignOut', Icon: SignOut },
+	{ title: 'Profile', Icon: Icon.User },
+	{ title: 'Settings', Icon: Icon.Gear },
+	{ title: 'SignOut', Icon: Icon.SignOut },
 ]
 
 const Nav_Buttons = [
-	{ index: 0, Icon: ChatCircleDots },
-	{ index: 1, Icon: Users },
-	{ index: 2, Icon: Phone },
+	{ index: 0, Icon: Icon.ChatCircleDots },
+	{ index: 1, Icon: Icon.Users },
+	{ index: 2, Icon: Icon.Phone },
 ]
 
 const Nav_Setting = [
 	{
 		index: 3,
-		icon: <GearSix />,
+		icon: <Icon.GearSix />,
+	},
+]
+
+interface CallListItem {
+	id: number
+	img: string
+	name: string
+	missed: boolean
+	incoming: boolean
+}
+const CallList: CallListItem[] = [
+	{
+		id: 0,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: false,
+		incoming: false,
+	},
+	{
+		id: 1,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: true,
+		incoming: true,
+	},
+	{
+		id: 2,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: false,
+		incoming: true,
+	},
+	{
+		id: 3,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: false,
+		incoming: true,
+	},
+	{
+		id: 4,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: false,
+		incoming: true,
+	},
+	{
+		id: 5,
+		img: faker.image.avatar(),
+		name: faker.name.firstName(),
+		missed: false,
+		incoming: true,
 	},
 ]
 
@@ -295,7 +347,36 @@ const SHARED_DOCS: ChatHistoryListItem[] = [
 	},
 ]
 
+const membersList = [
+	{
+		id: 0,
+		name: faker.name.firstName(),
+		img: faker.image.avatar(),
+	},
+	{
+		id: 1,
+		name: faker.name.firstName(),
+		img: faker.image.avatar(),
+	},
+	{
+		id: 2,
+		name: faker.name.firstName(),
+		img: faker.image.avatar(),
+	},
+	{
+		id: 3,
+		name: faker.name.firstName(),
+		img: faker.image.avatar(),
+	},
+	{
+		id: 4,
+		name: faker.name.firstName(),
+		img: faker.image.avatar(),
+	},
+]
+
 export {
+	membersList,
 	Profile_Menu,
 	Nav_Setting,
 	Nav_Buttons,
@@ -304,4 +385,5 @@ export {
 	Message_options,
 	SHARED_LINKS,
 	SHARED_DOCS,
+	CallList,
 }

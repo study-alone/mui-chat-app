@@ -1,5 +1,5 @@
 import { alpha, Box, InputBase, inputBaseClasses, styled } from '@mui/material'
-import { MagnifyingGlass } from 'phosphor-react'
+import { Icon } from '@components/common'
 
 export const SearchStyled = styled(Box)(({ theme }) => ({
 	position: 'relative',
@@ -36,14 +36,13 @@ export const InputBaseStyled = styled(InputBase)(({ theme }) => ({
 }))
 
 interface SearchInputProps {
-	tabIndex?: number
 	placeholder?: string
 }
-export const SearchInput: React.FC<SearchInputProps> = ({ tabIndex, placeholder = 'Search...' }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ placeholder = 'Search...' }) => {
 	return (
-		<SearchStyled tabIndex={tabIndex}>
+		<SearchStyled>
 			<SearchIconWrapper>
-				<MagnifyingGlass color="#709CE6" />
+				<Icon.MagnifyingGlass color="#709CE6" />
 			</SearchIconWrapper>
 			<InputBaseStyled placeholder={placeholder} inputProps={{ 'aria-label': 'search' }} />
 		</SearchStyled>

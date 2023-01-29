@@ -1,7 +1,6 @@
-import { BadgeStyled } from '@components/common'
+import { BadgeStyled, Icon } from '@components/common'
 import { useContactToggle } from '@hooks/useContactToggle'
 import { Avatar, Box, Divider, IconButton, Stack, Typography } from '@mui/material'
-import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from 'phosphor-react'
 import { ConversationLayout } from './styled'
 
 interface ConversationHeaderProps {
@@ -37,17 +36,17 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({ fullName
 				</Stack>
 				<Stack direction="row" alignItems="center" spacing={3}>
 					<IconButton>
-						<VideoCamera />
+						<Icon.VideoCamera />
 					</IconButton>
 					<IconButton>
-						<Phone />
+						<Icon.Phone />
 					</IconButton>
 					<IconButton>
-						<MagnifyingGlass />
+						<Icon.MagnifyingGlass />
 					</IconButton>
 					<Divider orientation="vertical" flexItem />
 					<IconButton>
-						<CaretDown />
+						<Icon.CaretDown />
 					</IconButton>
 				</Stack>
 			</Stack>

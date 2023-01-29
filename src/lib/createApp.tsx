@@ -12,7 +12,7 @@ import { browserHistory } from '@utils/browserHistory'
 import type { Position } from '@store/devtools'
 
 interface ProviderProps {
-	recoilDebuggerPosition: Position
+	recoilDebuggerPosition?: Position
 	useHistory?: boolean
 }
 
@@ -22,7 +22,7 @@ export const Provider = collate<ProviderProps>()
 	/** RcoilRoot: recoil의 root store */
 	.add(({ children, recoilDebuggerPosition }) => (
 		<RecoilRoot>
-			<DebugObserver position={recoilDebuggerPosition} />
+			{recoilDebuggerPosition && <DebugObserver position={recoilDebuggerPosition} />}
 			{children}
 		</RecoilRoot>
 	))

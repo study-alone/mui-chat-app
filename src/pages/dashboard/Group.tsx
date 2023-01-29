@@ -1,6 +1,5 @@
 import { Box, Divider, IconButton, Link, Stack, styled, Typography } from '@mui/material'
-import { ChatItem, SearchInput, SimpleBarStyle } from '@components/common'
-import { Plus } from 'phosphor-react'
+import { ChatItem, SearchInput, SimpleBarStyle, Icon } from '@components/common'
 import { ChatList } from 'src/data'
 import { useCallback } from 'react'
 import { useDialog } from '@lib/modal'
@@ -17,7 +16,7 @@ const Container = styled(Box)(({ theme }) => {
 	}
 })
 
-const PlusButton = styled(Plus)(({ theme }) => ({
+const PlusButton = styled(Icon.Plus)(({ theme }) => ({
 	color: theme.palette.primary.main,
 }))
 
@@ -37,7 +36,7 @@ const Group: React.FC = () => {
 						<Typography variant="h5">Groups</Typography>
 					</Stack>
 					<Stack sx={{ width: '100%' }}>
-						<SearchInput tabIndex={0} placeholder="Search..." />
+						<SearchInput placeholder="Search..." />
 					</Stack>
 					<Stack direction="row" justifyContent="space-between" alignItems="center">
 						<Typography variant="subtitle2" component={Link}>
@@ -55,16 +54,20 @@ const Group: React.FC = () => {
 									Pinned
 								</Typography>
 								{/* Chat List */}
-								{ChatList.filter((item) => item.pinned).map((item) => (
-									<ChatItem key={item.id} {...item} />
-								))}
+								<Stack>
+									{ChatList.filter((item) => item.pinned).map((item) => (
+										<ChatItem key={item.id} {...item} />
+									))}
+								</Stack>
 							</Stack>
 							<Stack spacing={2.4}>
 								<Typography variant="subtitle2">All Grpups</Typography>
 								{/* Chat List */}
-								{ChatList.filter((item) => !item.pinned).map((item) => (
-									<ChatItem key={item.id} {...item} />
-								))}
+								<Stack>
+									{ChatList.filter((item) => !item.pinned).map((item) => (
+										<ChatItem key={item.id} {...item} />
+									))}
+								</Stack>
 							</Stack>
 						</SimpleBarStyle>
 					</Stack>

@@ -29,9 +29,7 @@ export const AppRouter: React.FC<AppRouterProps> = ({ basename, children, histor
 					console.log('forward')
 				} else {
 					setLocationKeys((keys) => [update.location.key, ...keys])
-					console.log('backeward')
-					// backward
-					// history.push('/detail')
+					console.log('backward')
 				}
 			}
 		})

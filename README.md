@@ -16,7 +16,7 @@
 -   **Icon**: phosphor-react
 -   **emoji**: @emoji-mart/react, @emoji-mart/data
 
-### 유튜브 내용에 대한 나의 잡생각
+### 유튜브 내용에 대한 나의 잡생각(part. 9 까지)
 
 > 1. MUI에서는 layout을 잡을 때 쓰는 컴포넌트들이 따로 존재한다. 물론 강제는 아니지만 사용하면 굉장히 편리한 컴포넌트 들이 많다. 그중 Grid, Stack, Box(마치 html의 div 태그 같은 놈) 를 정말 많이 사용한다. 특히 Stack 같은 경우 거의 남발 수준이다. 그러다 보니 결과물인 HTML에서도 태그양이 상당하다. 꼭 그럴 필요가 있나 싶다. 컴팩트하게 생각할 순 없는 건가?
 >
@@ -42,3 +42,155 @@
 ## TODO
 
 [ ] Dialog(모달)을 어떻게 하면 체계적이고 컴팩트하게 관리할수 있을까?(portal, register, types...)
+
+## `react-router-dom@6` history blocking
+
+### `react-router-dom@6`는 history를 prop으로 주입하는 방법을 별도로 구현할 수 있다.
+
+우리가 가끔씩 사용하는 `history` 라는 패키지는 remix팀에서 구현하고 배포한 라이브러리인데 이것과 react-router의 `<Router />` 컴포넌트를 이용해 직접 `CustomRouter`를 구현할 수 있다.
+
+> 💡 사용할 땐 `react-router-dom`에서 import하지만 패키지 내부에선 `react-router`에 있는 `<Router />` 컴포넌트를 import하고 바로 export 해줌으로써 `react-router-dom`에서 사용 가능하게 해준다.
+
+> 💡 제가 참고했던 모든 블로그를 작성해주신 개발자분들께 감사드립니다. 그리고 일일이 기억하지 못하고 참고링크로 남겨 두지 못한점 죄송합니다.
+
+위 생각과 참고사항들(블로그 글)을 바탕으로한 구현 코드
+
+#### broserHistory(single tone)
+
+```ts
+import { createBrowserHistory } from 'history'
+
+export const browserHistory = createBrowserHistory()
+```
+
+#### useBlocker hook
+
+```ts
+import { useEffect } from 'react'
+import { browserHistory } from './browserHistory'
+
+import type { Blocker } from 'history'
+
+interface UseBlockerHook {
+	(blocker: Blocker, when?: boolean): void
+}
+
+export const useBlocker: UseBlockerHook = (blocker, when = true) => {
+	useEffect(() => {
+		if (!when) return
+
+		const unblock = browserHistory.block((tx) => {
+			const autoUnblockingTx = {
+				...tx,
+				retry() {
+					unblock()
+					tx.retry()
+				},
+			}
+			blocker(autoUnblockingTx)
+		})
+
+		return unblock
+	}, [blocker, when])
+}
+```
+
+#### usePrompt hook
+
+```ts
+import { useCallback } from 'react'
+import { useBlocker } from '@hooks/useBlocker'
+
+import type { Blocker } from 'history'
+
+interface UsePromptHook {
+	(message: string, when?: boolean): void
+}
+
+export const usePrompt: UsePromptHook = (message, when = true) => {
+	const blocker = useCallback<Blocker>(
+		(tx) => {
+			// confirm이 아니라 여기서 custom modal 또는 dialog 를 넣는게 가능
+			// 예시를 위해 간단히 구현
+			// 핵심은 retry 메서드를 잘 실행 시켜주는 것
+			if (window.confirm(message)) tx.retry()
+		},
+		[message],
+	)
+
+	useBlocker(blocker, when)
+}
+```
+
+#### CustomRouter component
+
+useEffect 부분에는 `forward/backward`에 대한 처리도 추가
+
+```tsx
+import { useEffect, useState } from 'react'
+import { Router } from 'react-router-dom'
+// action 타입을 정의해둔 Action enum이 이미 존재
+// 'push', 'pop' 을 직접 string으로 비교하지 않고 미리 정의해둔 enum을 활용
+import { Action } from 'history'
+import type { BrowserHistory } from 'history'
+
+export interface AppRouterProps extends React.PropsWithChildren {
+	basename?: string
+	history: BrowserHistory
+}
+
+export const AppRouter: React.FC<AppRouterProps> = ({ basename, children, history }) => {
+	const [customHistory, setCustomHistory] = useState<Pick<BrowserHistory, 'action' | 'location'>>({
+		action: history.action,
+		location: history.location,
+	})
+	const [locationKeys, setLocationKeys] = useState<string[]>([])
+
+	useEffect(() => {
+		return history.listen((update) => {
+			setCustomHistory(update)
+
+			if (history.action === Action.Push) {
+				setLocationKeys([update.location.key])
+			}
+
+			if (history.action === Action.Pop) {
+				if (locationKeys[1] === update.location.key) {
+					setLocationKeys(([_, ...keys]) => keys)
+					console.log('forward')
+				} else {
+					setLocationKeys((keys) => [update.location.key, ...keys])
+					console.log('backward')
+				}
+			}
+		})
+	}, [history, locationKeys])
+
+	return (
+		<Router
+			basename={basename}
+			location={customHistory.location}
+			navigationType={customHistory.action}
+			navigator={history}
+		>
+			{children}
+		</Router>
+	)
+}
+```
+
+#### example
+
+```tsx
+import { browserHistory } from './browserHistory'
+
+const App = () => {
+	return (
+		<AppRouter history={browserHistory}>
+			...
+			{children}
+			...
+		</AppRouter>
+	)
+}
+```

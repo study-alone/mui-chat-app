@@ -17,14 +17,17 @@ export const useContactToggle = () => {
 		}))
 	}, [setUi])
 
-	const setType = useCallback((type: ContactType) => {
-		setUi((prev) => ({
-			contact: {
-				open: prev.contact.open,
-				type,
-			},
-		}))
-	}, [])
+	const setType = useCallback(
+		(type: ContactType) => {
+			setUi((prev) => ({
+				contact: {
+					open: prev.contact.open,
+					type,
+				},
+			}))
+		},
+		[setUi],
+	)
 
 	return {
 		open: ui.contact.open,

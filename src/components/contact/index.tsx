@@ -1,9 +1,8 @@
-import { AntSwitch } from '@components/common'
+import { AntSwitch, Icon } from '@components/common'
 import { faker } from '@faker-js/faker'
 import { useContactToggle } from '@hooks/useContactToggle'
 import { Avatar, Button, Divider, IconButton, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { Bell, CaretRight, Phone, Prohibit, Star, Trash, VideoCamera, X } from 'phosphor-react'
 import { useCallback } from 'react'
 import { ContactStyled, HeaderStyled } from '@components/contact/styled'
 import SharedMessages from '@components/contact/SharedMessages'
@@ -70,7 +69,7 @@ export const Contact: React.FC = () => {
 					>
 						<Typography variant="subtitle2">Contact Info</Typography>
 						<IconButton onClick={handleClose}>
-							<X />
+							<Icon.X />
 						</IconButton>
 					</Stack>
 				</HeaderStyled>
@@ -93,13 +92,13 @@ export const Contact: React.FC = () => {
 					<Stack direction="row" alignItems="center" justifyContent="space-evenly">
 						<Stack spacing={1} alignItems="center">
 							<IconButton>
-								<Phone />
+								<Icon.Phone />
 							</IconButton>
 							<Typography variant="overline">Voice</Typography>
 						</Stack>
 						<Stack spacing={1} alignItems="center">
 							<IconButton>
-								<VideoCamera />
+								<Icon.VideoCamera />
 							</IconButton>
 							<Typography variant="overline">Video</Typography>
 						</Stack>
@@ -112,7 +111,7 @@ export const Contact: React.FC = () => {
 					<Divider />
 					<Stack direction="row" alignItems="center" justifyContent="space-between">
 						<Typography variant="subtitle2">Media, Links & Docs</Typography>
-						<Button endIcon={<CaretRight />} onClick={handleOpenShared}>
+						<Button endIcon={<Icon.CaretRight />} onClick={handleOpenShared}>
 							401
 						</Button>
 					</Stack>
@@ -126,17 +125,17 @@ export const Contact: React.FC = () => {
 					<Divider />
 					<Stack direction="row" alignItems="center" justifyContent="space-between">
 						<Stack direction="row" alignItems="center" spacing={2}>
-							<Star size={21} />
+							<Icon.Star size={21} />
 							<Typography variant="subtitle2">Starred Message</Typography>
 						</Stack>
 						<IconButton onClick={handleOpenStarred}>
-							<CaretRight />
+							<Icon.CaretRight />
 						</IconButton>
 					</Stack>
 					<Divider />
 					<Stack direction="row" alignItems="center" justifyContent="space-between">
 						<Stack direction="row" alignItems="center" spacing={2}>
-							<Bell size={21} />
+							<Icon.Bell size={21} />
 							<Typography variant="subtitle2">Mute Notification</Typography>
 						</Stack>
 						<AntSwitch />
@@ -151,10 +150,20 @@ export const Contact: React.FC = () => {
 						</Stack>
 					</Stack>
 					<Stack direction="row" alignItems="center" spacing={2}>
-						<Button startIcon={<Prohibit />} fullWidth variant="outlined" onClick={handleOpenBlockDialog}>
+						<Button
+							startIcon={<Icon.Prohibit />}
+							fullWidth
+							variant="outlined"
+							onClick={handleOpenBlockDialog}
+						>
 							Block
 						</Button>
-						<Button startIcon={<Trash />} fullWidth variant="outlined" onClick={handleOpenDeleteDialog}>
+						<Button
+							startIcon={<Icon.Trash />}
+							fullWidth
+							variant="outlined"
+							onClick={handleOpenDeleteDialog}
+						>
 							Delete
 						</Button>
 					</Stack>

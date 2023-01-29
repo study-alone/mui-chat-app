@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react'
 import { Avatar, Divider, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material'
-import { AntSwitch } from '@components/common'
+import { AntSwitch, Icon } from '@components/common'
 import { SideNavigationStyled, LogoStyled } from '@layouts/dashboard/index.styled'
 import { NavButton } from '@layouts/dashboard/NavButton'
 import useSettings from '@hooks/useSettings'
 import Logo from '@assets/Images/logo.ico'
-import { Gear } from 'phosphor-react'
 import { Nav_Buttons, Profile_Menu } from 'src/data'
 import { faker } from '@faker-js/faker'
 
@@ -62,7 +61,7 @@ export const SideNavigation: React.FC = () => {
 						))}
 						<Divider sx={{ width: '48px' }} />
 						<NavButton isActive={selected === 3} onClick={setSelected} index={3}>
-							<Gear />
+							<Icon.Gear />
 						</NavButton>
 					</Stack>
 				</Stack>

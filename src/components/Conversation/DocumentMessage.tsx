@@ -1,6 +1,6 @@
 import { Box, IconButton, Stack, Typography, useTheme } from '@mui/material'
-import { DownloadSimple, Image } from 'phosphor-react'
 import { MessageOptions } from '@components/Conversation/MessageOptions'
+import { Icon } from '@components/common'
 
 interface DocumentMessageProps {
 	incoming?: boolean
@@ -31,10 +31,10 @@ export const DocumentMessage: React.FC<DocumentMessageProps> = ({ incoming, mess
 							borderRadius: 1,
 						}}
 					>
-						<Image size={48} />
+						<Icon.Image size={48} />
 						<Typography variant="caption">Abstract.png</Typography>
 						<IconButton>
-							<DownloadSimple />
+							<Icon.DownloadSimple />
 						</IconButton>
 					</Stack>
 					<Typography variant="body2" sx={{ color: incoming ? palette.text.primary : '#fff' }}>

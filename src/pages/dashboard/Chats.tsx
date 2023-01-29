@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, IconButton, Stack, styled, Typography, Button, Divider } from '@mui/material'
-import { ArchiveBox, CircleDashed } from 'phosphor-react'
 import { ChatList } from 'src/data'
-import { SimpleBarStyle, SearchInput, ChatItem } from '@components/common'
+import { SimpleBarStyle, SearchInput, ChatItem, Icon } from '@components/common'
 
 const ChatsStyled = styled(Box)(({ theme }) => ({
 	position: 'relative',
@@ -25,15 +24,15 @@ const Chats: React.FC<ChatsProps> = () => {
 				<Stack direction="row" alignItems="center" justifyContent="space-between">
 					<Typography variant="h5">Chats</Typography>
 					<IconButton>
-						<CircleDashed />
+						<Icon.CircleDashed />
 					</IconButton>
 				</Stack>
 				<Stack sx={{ width: '100%' }}>
-					<SearchInput tabIndex={0} />
+					<SearchInput />
 				</Stack>
 				<Stack spacing={1}>
 					<Stack direction="row" alignItems="center" spacing={1.5}>
-						<ArchiveBox size={24} />
+						<Icon.ArchiveBox size={24} />
 						<Button>Archive</Button>
 					</Stack>
 					<Divider />
@@ -44,17 +43,21 @@ const Chats: React.FC<ChatsProps> = () => {
 							<Typography variant="subtitle2" sx={{ color: '#676767' }}>
 								Pinned
 							</Typography>
-							{ChatList.filter((item) => item.pinned).map((item, index) => (
-								<ChatItem {...item} key={`pinned-chat-item-${index}`} />
-							))}
+							<Stack>
+								{ChatList.filter((item) => item.pinned).map((item, index) => (
+									<ChatItem {...item} key={`pinned-chat-item-${index}`} />
+								))}
+							</Stack>
 						</Stack>
 						<Stack spacing={2.4} my={4}>
 							<Typography variant="subtitle2" sx={{ color: '#676767' }}>
 								All Chats
 							</Typography>
-							{ChatList.filter((item) => !item.pinned).map((item, index) => (
-								<ChatItem {...item} key={`pinned-chat-item-${index}`} />
-							))}
+							<Stack>
+								{ChatList.filter((item) => !item.pinned).map((item, index) => (
+									<ChatItem {...item} key={`pinned-chat-item-${index}`} />
+								))}
+							</Stack>
 						</Stack>
 					</SimpleBarStyle>
 				</Stack>

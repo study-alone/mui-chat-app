@@ -1,33 +1,32 @@
 import { useCallback, useState } from 'react'
 import { Box, Fab, IconButton, Stack, Tooltip } from '@mui/material'
-import { LinkSimple, PaperPlaneTilt, Smiley, Sticker, Image, Camera, File, User } from 'phosphor-react'
 import { ConversationLayout, InputStyled, SendButtonStyled } from '@components/Conversation/styled'
-import { EmojiPicker } from '@components/common'
+import { EmojiPicker, Icon } from '@components/common'
 
 const Actions = [
 	{
 		color: '#4da5fe',
-		Icon: Image,
+		Icon: Icon.Image,
 		title: 'Photo/Video',
 	},
 	{
 		color: '#1b8cfe',
-		Icon: Sticker,
+		Icon: Icon.Sticker,
 		title: 'Stickers',
 	},
 	{
 		color: '#0172e4',
-		Icon: Camera,
+		Icon: Icon.Camera,
 		title: 'Image',
 	},
 	{
 		color: '#0159b2',
-		Icon: File,
+		Icon: Icon.File,
 		title: 'Document',
 	},
 	{
 		color: '#013f7f',
-		Icon: User,
+		Icon: Icon.User,
 		title: 'Contact',
 	},
 ]
@@ -57,9 +56,15 @@ const ChatInput: React.FC = () => {
 				disableUnderline: true,
 				startAdornment: (
 					<Stack sx={{ width: 'max-content', position: 'relative' }}>
-						<Stack sx={{ position: 'absolute', bottom: 60, display: actionsOpen ? 'block' : 'none' }}>
+						<Stack
+							sx={{ position: 'absolute', bottom: 60, display: actionsOpen ? 'block' : 'none' }}
+						>
 							{Actions.map((item, index) => (
-								<Tooltip title={item.title} placement="right" key={`link-action-list-${item.title}`}>
+								<Tooltip
+									title={item.title}
+									placement="right"
+									key={`link-action-list-${item.title}`}
+								>
 									<Fab sx={{ backgroundColor: item.color, marginBottom: '16px' }}>
 										<item.Icon size={24} />
 									</Fab>
@@ -67,7 +72,7 @@ const ChatInput: React.FC = () => {
 							))}
 						</Stack>
 						<IconButton onClick={handleClickActionsOpen}>
-							<LinkSimple />
+							<Icon.LinkSimple />
 						</IconButton>
 					</Stack>
 				),
@@ -85,7 +90,7 @@ const ChatInput: React.FC = () => {
 							/>
 						</Box>
 						<IconButton onClick={handleClickEmoji}>
-							<Smiley />
+							<Icon.Smiley />
 						</IconButton>
 					</Stack>
 				),
@@ -102,7 +107,7 @@ export const ConversationFooter: React.FC = () => {
 				<SendButtonStyled>
 					<Stack sx={{ height: '100%', width: '100%' }} alignItems="center" justifyContent="center">
 						<IconButton>
-							<PaperPlaneTilt color="#fff" />
+							<Icon.PaperPlaneTilt color="#fff" />
 						</IconButton>
 					</Stack>
 				</SendButtonStyled>

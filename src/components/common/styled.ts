@@ -1,4 +1,4 @@
-import { styled, Badge, badgeClasses } from '@mui/material'
+import { styled, Badge, badgeClasses, Box } from '@mui/material'
 
 export const BadgeStyled = styled(Badge)(({ theme }) => ({
 	[`& .${badgeClasses.badge}`]: {
@@ -29,3 +29,16 @@ export const BadgeStyled = styled(Badge)(({ theme }) => ({
 		},
 	},
 }))
+
+export const ChatItemStyled = styled(Box)(({ theme }) => {
+	const { palette, shadows } = theme
+	const { mode, background } = palette
+
+	return {
+		width: '100%',
+		borderRadius: 1 * 8,
+		backgroundColor: mode === 'light' ? '#fff' : background.paper,
+		boxShadow: shadows[5],
+		padding: 16,
+	}
+})
