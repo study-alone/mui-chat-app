@@ -5,7 +5,7 @@ type ComponentType = typeof dialog[keyof typeof dialog]
 
 export type ModalState = {
 	Component: ComponentType
-	props?: React.ComponentProps<ComponentType>
+	props: React.ComponentProps<ComponentType>
 }
 
 export type ModalDispatch = {

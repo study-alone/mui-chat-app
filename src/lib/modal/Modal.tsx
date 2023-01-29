@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useContext, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { ModalDispatchContext, ModalStateContext } from '@lib/modal/context'
 import { disableScroll } from '@utils/disableScroll'
 import { omit } from 'lodash-es'
 
 export interface ModalProps {
-	onClose?(): void
+	onClose(): void
 	onSubmit?(...args: unknown[]): Promise<void>
 }
 
@@ -14,8 +14,8 @@ interface ModalsProps {
 }
 
 export const Modals: React.FC<ModalsProps> = ({ selector = 'modal-container' }) => {
-	const openedModals = React.useContext(ModalStateContext)
-	const { close } = React.useContext(ModalDispatchContext)
+	const openedModals = useContext(ModalStateContext)
+	const { close } = useContext(ModalDispatchContext)
 	const element =
 		document.querySelector(selector) ??
 		(() => {
@@ -24,7 +24,7 @@ export const Modals: React.FC<ModalsProps> = ({ selector = 'modal-container' }) 
 			return modalContainer
 		})()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (openedModals.length) {
 			disableScroll.on()
 		} else {
@@ -36,7 +36,7 @@ export const Modals: React.FC<ModalsProps> = ({ selector = 'modal-container' }) 
 		<>
 			{openedModals.map(({ Component, props }, index) => {
 				const onClose = () => {
-					typeof props?.onClose === 'function' && props.onClose()
+					typeof props.onClose === 'function' && props.onClose()
 					close(Component)
 				}
 				const handleSubmit = async (...args: unknown[]) => {
