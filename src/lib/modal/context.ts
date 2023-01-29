@@ -5,11 +5,11 @@ type ComponentType = typeof dialog[keyof typeof dialog]
 
 export type ModalState = {
 	Component: ComponentType
-	props?: React.ComponentProps<ComponentType>
+	props: React.ComponentProps<ComponentType>
 }
 
 export type ModalDispatch = {
-	open(Component: ComponentType, props?: React.ComponentProps<ComponentType>): void
+	open(Component: ComponentType, props: React.ComponentProps<ComponentType>): void
 	close(Component: ComponentType): void
 }
 
